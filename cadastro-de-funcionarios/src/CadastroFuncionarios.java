@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CadastroFuncionarios {
 
-    static final double SALARIO_BASE = 2000.0;
+    static double salarioBase = 2000.0;
 
     static ArrayList<String> tipos = new ArrayList<>();
     static ArrayList<String> nomes = new ArrayList<>();
@@ -152,12 +152,12 @@ public class CadastroFuncionarios {
 
         while (i < nomes.size()) {
 
-            double salarioFinal = SALARIO_BASE;
+            double salarioFinal = salarioBase;
 
             System.out.println("\n------------------------");
             System.out.println("Nome: " + nomes.get(i));
             System.out.println("Matrícula: " + matriculas.get(i));
-            System.out.println("Salário Base: R$ " + SALARIO_BASE);
+            System.out.println("Salário Base: R$ " + salarioBase);
 
             if (tipos.get(i).equals("PADRAO")) {
 
