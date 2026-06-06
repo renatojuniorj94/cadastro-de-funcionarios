@@ -72,7 +72,21 @@ public class CadastroFuncionarios {
 
     public static boolean matriculaExiste(int matricula) {
 
-        tipos.add("PADRAO");
+        int i = 0;
+
+        while (i < matriculas.size()) {
+
+            if (matriculas.get(i) == matricula) {
+                return true;
+            }
+
+            i++;
+        }
+
+        return false;
+    }
+
+    public static void cadastrarPadrao() {
 
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
@@ -80,6 +94,15 @@ public class CadastroFuncionarios {
         System.out.print("Matrícula: ");
         int matricula = entrada.nextInt();
         entrada.nextLine();
+
+        if (matriculaExiste(matricula)) {
+            System.out.println("\nERRO: Matrícula já cadastrada.");
+            return;
+        }
+
+        tipos.add("PADRAO");
+        nomes.add(nome);
+        matriculas.add(matricula);
 
         vendas.add(0.0);
         percentuais.add(0.0);
@@ -91,13 +114,17 @@ public class CadastroFuncionarios {
 
     public static void cadastrarComissionado() {
 
-        tipos.add("COMISSIONADO");
-
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
 
         System.out.print("Matrícula: ");
-        matriculas.add(entrada.nextInt());
+        int matricula = entrada.nextInt();
+
+        if (matriculaExiste(matricula)) {
+            System.out.println("\nERRO: Matrícula já cadastrada.");
+            entrada.nextLine();
+            return;
+        }
 
         System.out.print("Valor total de vendas: ");
         double venda = entrada.nextDouble();
@@ -107,6 +134,13 @@ public class CadastroFuncionarios {
 
         entrada.nextLine();
 
+        tipos.add("COMISSIONADO");
+        nomes.add(nome);
+        matriculas.add(matricula);
+
+        vendas.add(venda);
+        percentuais.add(percentual);
+
         quantidadesPecas.add(0);
         valoresPeca.add(0.0);
 
@@ -115,13 +149,17 @@ public class CadastroFuncionarios {
 
     public static void cadastrarProducao() {
 
-        tipos.add("PRODUCAO");
-
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
 
         System.out.print("Matrícula: ");
-        matriculas.add(entrada.nextInt());
+        int matricula = entrada.nextInt();
+
+        if (matriculaExiste(matricula)) {
+            System.out.println("\nERRO: Matrícula já cadastrada.");
+            entrada.nextLine();
+            return;
+        }
 
         System.out.print("Quantidade de peças produzidas: ");
         int quantidade = entrada.nextInt();
@@ -130,6 +168,13 @@ public class CadastroFuncionarios {
         double valorPeca = entrada.nextDouble();
 
         entrada.nextLine();
+
+        tipos.add("PRODUCAO");
+        nomes.add(nome);
+        matriculas.add(matricula);
+
+        quantidadesPecas.add(quantidade);
+        valoresPeca.add(valorPeca);
 
         vendas.add(0.0);
         percentuais.add(0.0);
@@ -165,8 +210,7 @@ public class CadastroFuncionarios {
 
             } else if (tipos.get(i).equals("COMISSIONADO")) {
 
-                double comissao =
-                        vendas.get(i) * percentuais.get(i) / 100;
+                double comissao = vendas.get(i) * percentuais.get(i) / 100;
 
                 salarioFinal += comissao;
 
@@ -175,9 +219,8 @@ public class CadastroFuncionarios {
 
             } else if (tipos.get(i).equals("PRODUCAO")) {
 
-                double produtividade =
-                        quantidadesPecas.get(i)
-                                * valoresPeca.get(i);
+                double produtividade = quantidadesPecas.get(i)
+                        * valoresPeca.get(i);
 
                 salarioFinal += produtividade;
 
