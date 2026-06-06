@@ -70,15 +70,15 @@ public class CadastroFuncionarios {
         System.out.print("Escolha: ");
     }
 
-    public static void cadastrarPadrao() {
+    public static boolean matriculaExiste(int matricula) {
 
         tipos.add("PADRAO");
 
         System.out.print("Nome: ");
-        nomes.add(entrada.nextLine());
+        String nome = entrada.nextLine();
 
         System.out.print("Matrícula: ");
-        matriculas.add(entrada.nextInt());
+        int matricula = entrada.nextInt();
         entrada.nextLine();
 
         vendas.add(0.0);
@@ -94,16 +94,16 @@ public class CadastroFuncionarios {
         tipos.add("COMISSIONADO");
 
         System.out.print("Nome: ");
-        nomes.add(entrada.nextLine());
+        String nome = entrada.nextLine();
 
         System.out.print("Matrícula: ");
         matriculas.add(entrada.nextInt());
 
         System.out.print("Valor total de vendas: ");
-        vendas.add(entrada.nextDouble());
+        double venda = entrada.nextDouble();
 
         System.out.print("Percentual de comissão: ");
-        percentuais.add(entrada.nextDouble());
+        double percentual = entrada.nextDouble();
 
         entrada.nextLine();
 
@@ -118,16 +118,16 @@ public class CadastroFuncionarios {
         tipos.add("PRODUCAO");
 
         System.out.print("Nome: ");
-        nomes.add(entrada.nextLine());
+        String nome = entrada.nextLine();
 
         System.out.print("Matrícula: ");
         matriculas.add(entrada.nextInt());
 
         System.out.print("Quantidade de peças produzidas: ");
-        quantidadesPecas.add(entrada.nextInt());
+        int quantidade = entrada.nextInt();
 
         System.out.print("Valor por peça: ");
-        valoresPeca.add(entrada.nextDouble());
+        double valorPeca = entrada.nextDouble();
 
         entrada.nextLine();
 
